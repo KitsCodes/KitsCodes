@@ -1,0 +1,25 @@
+body{
+ overflow: hidden;
+ background-color: rgb(20, 20, 20);
+ margin: 0px;
+ color: white;
+ font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.menu-background-pattern {
+ height: 100vh;
+ width: 100vw; 
+ background-image: radial-gradient(
+   rgba(255, 255, 255, 0.15) 10%,
+   transparent 7%
+ );
+ background-position: 0% 0%;
+ background-size: 5vmin 5vmin;
+ position: absolute;
+ left: 0px;
+ right: 0px;
+ z-index: -1;
+ 
+ transition: opacity 800ms ease,
+   background-size 500ms ease;
+}
