@@ -22,11 +22,11 @@ body {
         rgba(255, 255, 255, 0.25) 15%,
         transparent 0
       ) 50% 0 / 20px 20px,
-   linear-gradient(-45deg, #ffffff, #8e3a59, #000000, #8e3a59, #ffffff);
+   linear-gradient(-45deg, #ffffff9a, #8e3a599a, #0000009a, #8e3a599a, #ffffff9a);
  background-size: 20px 20px, 400% 400%;
  background-color: rgb(40,40,40);
  padding: 10px 10px;
- animation: gradientShift 15s linear infinite;
+ animation: gradientShift 25s linear infinite;
 }
 
 header {
@@ -109,7 +109,7 @@ img {
   overflow: hidden;
   display: grid;
   grid-template-rows: 1fr auto;
-  transition: border-radius 500ms, opacity 500ms, width 500ms, height 500ms;
+  transition: border-radius 1000ms, opacity 1000ms, width 1000ms, height 1000ms;
   user-select: none;
   isolation: isolate;
 }
