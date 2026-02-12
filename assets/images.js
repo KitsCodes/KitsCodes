@@ -11,7 +11,7 @@
 const carouselImages = [
   {
     src: 'images/senna.jpg',
-    title: 'Senna McLaren',
+    title: 'McLaren Senna',
     description: 'A classic automotive capture featuring the legendary McLaren Senna, showcasing its aggressive design and racing heritage.',
     game: 'Assetto Corsa'
   },

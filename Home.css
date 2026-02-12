@@ -1,5 +1,10 @@
-html, body {
+html,
+body {
   min-height: 100%;
+}
+
+* {
+  box-sizing: border-box;
 }
 
 @keyframes gradientShift {
@@ -15,50 +20,52 @@ html, body {
 }
 
 body {
- overflow-x: hidden;
- overflow-y: scroll;
- scrollbar-gutter: stable;
- background: 
-   radial-gradient(
-        rgba(255, 255, 255, 0.25) 15%,
-        transparent 0
-      ) 50% 0 / 20px 20px,
-   linear-gradient(-45deg, #ffffff46,  #00000046, #ffffff46);
- background-size: 10px 10px, 200% 200%;
- background-color: rgb(40,40,40);
- padding: 10px 10px;
- animation: gradientShift 25s linear infinite;
+  overflow-x: hidden;
+  overflow-y: scroll;
+  scrollbar-gutter: stable;
+  background:
+    radial-gradient(rgba(255, 255, 255, 0.25) 15%, transparent 0) 50% 0 / 20px 20px,
+    linear-gradient(-45deg, #ffffff46, #00000046, #ffffff46);
+  background-size: 10px 10px, 200% 200%;
+  background-color: rgb(40, 40, 40);
+  padding: 10px;
+  animation: gradientShift 25s linear infinite;
 }
 
 :root {
   --fontMain: JetBrains Mono, monospace;
   --fontSec: Montserrat, sans-serif;
+  --bg-dark: rgba(0, 0, 0, 0.5);
+  --border-light: rgba(255, 255, 255, 0.2);
+  --text-light: rgba(255, 255, 255, 0.2);
+  --text-light-hover: rgba(255, 255, 255, 0.4);
+  --text-light-border: rgba(255, 255, 255, 0.6);
 }
 
 
-/* Scrollbar Customization */
+/* Scrollbar customization */
 ::-webkit-scrollbar {
- width: 6px;
+  width: 6px;
 }
 
 ::-webkit-scrollbar-track {
- background: rgba(255, 255, 255, 0);
+  background: transparent;
 }
 
 ::-webkit-scrollbar-thumb {
- background: rgb(255, 255, 255);
- border-radius: 6px;
+  background: white;
+  border-radius: 6px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
- background: rgba(255, 255, 255, 0);
+  background: transparent;
 }
 
 header {
- display: flex;
- align-items: center;
- justify-content: space-between;
- font-size: 1.8em;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 1.8em;
 }
 
 h1 {
@@ -67,24 +74,21 @@ h1 {
   font-size: 2rem;
 }
 
-/* HEADer */
 .header-center {
- flex: 1;
- text-align: center;
- font-size: 1.3em;
- font-weight: bold;
- font-family: var(--fontMain);
+  flex: 1;
+  text-align: center;
+  font-size: 1.3em;
+  font-weight: bold;
+  font-family: var(--fontMain);
 }
 
-/* Now for the main part */
+/* Main layout */
 .main {
- display: flex;
- flex-direction: column;
- align-items: center;
- min-height: 100vh;
- color: white;
- padding: 20px;
- justify-content: flex-start;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: white;
+  padding: 20px;
 }
 
 img {
@@ -97,7 +101,6 @@ img {
   transition: opacity 300ms ease;
 }
 
-/** container **/
 .container {
   display: flex;
   flex-direction: column;
@@ -106,10 +109,9 @@ img {
   z-index: 1;
   gap: 40px;
   width: 100%;
-  max-width: 1200px;
+  max-width: 1000px;
 }
 
-/** icon **/
 .icon {
   margin-inline: auto;
   margin-bottom: 15px;
@@ -121,29 +123,28 @@ img {
   font-family: var(--fontMain);
 }
 
-/** cards **/
+/* Cards */
 .cont-items {
   color: white;
   background-color: transparent;
-  width: 35vw;
-  height: auto;
   min-height: 35vh;
   border: none;
   border-radius: 0;
-  overflow: visible;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
   user-select: none;
   isolation: isolate;
-  margin-right: auto;
   font-family: var(--fontSec);
 }
 
+.cont-items:nth-child(odd) {
+  margin-inline: 0 auto;
+}
+
 .cont-items:nth-child(even) {
-  margin-right: 0;
-  margin-left: auto;
+  margin-inline: auto 0;
 }
 
 .info {
@@ -151,7 +152,7 @@ img {
   z-index: 2;
   display: block;
   padding: 25px;
-  background: rgba(0, 0, 0, 0.5);
+  background: var(--bg-dark);
   border-radius: 20px;
   font-size: 0.95rem;
   line-height: 1.8;
@@ -160,7 +161,7 @@ img {
   overflow-wrap: break-word;
 }
 
-/** art pieces carousel **/
+/* Carousel */
 .art-pieces {
   margin-top: auto;
   display: flex;
@@ -177,7 +178,7 @@ img {
   min-width: 300px;
   color: white;
   padding: 30px;
-  background: rgba(0, 0, 0, 0.5);
+  background: var(--bg-dark);
   border-radius: 10px;
   font-family: var(--fontSec);
   height: fit-content;
@@ -205,8 +206,8 @@ img {
 .carousel-image {
   width: 1152px;
   height: 758px;
-  background: rgba(0, 0, 0, 0.5);
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  background: var(--bg-dark);
+  border: 1px solid var(--border-light);
   border-radius: 10px;
   overflow: hidden;
   display: flex;
@@ -229,8 +230,8 @@ img {
 
 .carousel-btn {
   padding: 12px 30px;
-  background: rgba(255, 255, 255, 0.1);
-  border: 1px solid rgba(255, 255, 255, 0.3);
+  background: var(--text-light);
+  border: 1px solid var(--text-light-border);
   color: white;
   font-size: 1em;
   border-radius: 5px;
@@ -240,7 +241,7 @@ img {
 }
 
 .carousel-btn:hover {
-  background: rgba(255, 255, 255, 0.2);
+  background: var(--text-light-hover);
   border-color: rgba(255, 255, 255, 0.5);
 }
 
