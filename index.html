@@ -4,6 +4,8 @@
  <meta charset="UTF-8" />
  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
  <meta> <link rel="stylesheet" href="Home.css"/>
+ <script src="assets/images.js"></script>
+ <script src="assets/carousel.js"></script>
  <title>Pagina principal</title>
 </head>
 <body>
@@ -13,40 +15,58 @@
 <section class="main">
  <div class="container">
   <div class="cont-items">
-   <img src="Images/Ferrari.png" alt="Ferrari at Shutoko Highway"/>
    <div class="icon">Myself</div>
-   <div class="info">Name is KitsCodes (also Lappen), but the government name is Pedro Henrique S.S.G.<br/>
-      - Age: 20 years old<br/>
-      - Location: Brazil<br/>
-      - Student of Analysis and Systems Development<br/>
-      - Passionate about technology, cars and photography<br/>
+   <div class="info">
+      <strong>Nickname: </strong> KitsCodes (also Lappen)<br/>
+      <strong>Full Name: </strong> Pedro H. S. S. Geraldo<br/>
+      <strong>Age: </strong> 20 years old<br/>
+      <strong>Location: </strong> Brazil<br/>
+      <strong>Education: </strong> Student of Analysis and Systems Development<br/>
+      <strong>Interests: </strong> Technology, automotive photography, and software engineering<br/>
+      <strong>Passion: </strong> Creating innovative solutions and contributing to the tech community
    </div>
   </div>
+
   <div class="cont-items">
-   <img src="Images/Porsche.png" alt="Porsche at Nürburgring"/>
    <div class="icon">Things i do</div>
    <div class="info">
-      - Software Development<br/>
-      - Web Development<br/>
-      - Game Development<br/>
-      - Open Source Contribution<br/>
-      - Technical Writing<br/>
+      <strong>Web Development:</strong> Creating responsive and interactive web experiences<br/>
+      <strong>Graphical Design:</strong> Develop beautiful pieces of art, envolving cars, nature and anime (possibly)<br/>
+      <strong>Game Dev:</strong> Designing engaging gameplay mechanics<br/>
+      <strong>Open Source:</strong> Contributing to community projects and collaborative development<br/>
+      <strong>Technical Writing:</strong> Documenting code and sharing knowledge through articles
    </div>
   </div>
+
   <div class="cont-items">
-   <img src="Images/Senna.jpg" alt="Senna at Nürburgring"/>
    <div class="icon">Experiences</div>
    <div class="info">
-      - 2 years of experience in software development<br/>
-      - Worked on various web and mobile applications<br/>
-      - Contributed to open source projects<br/>
-      - Experience with multiple programming languages and frameworks<br/>
+      <strong>Software Development:</strong> 2+ years crafting efficient and maintainable code<br/>
+      <strong>Open Source:</strong> Active contributor to community-driven projects and initiatives<br/>
+      <strong>Tech Stack:</strong> Proficient in visual programming languages and modern frameworks<br/>
+      <strong>Collaboration:</strong> Worked with diverse teams in diferent environments<br/>
+      <strong>Graphical design:</strong> 2+ years of Adobe software (Photoshop, Illustrator, InDesign)
+      <strong>Learning:</strong> Constantly evolving skills and staying current with industry trends
    </div>
   </div>
  </div>
-</section>
 
-<script src="script.js"></script>
-
+ <div class="art-pieces">
+   <div class="carousel-display">
+     <div class="carousel-image">
+       <img src="images\senna.jpg" alt="Art piece" id="carouselImage">
+     </div>
+     <div class="carousel-nav">
+       <button class="carousel-btn prev" onclick="changeSlide(-1)">‹ Previous</button>
+       <button class="carousel-btn next" onclick="changeSlide(1)">Next ›</button>
+     </div>
+   </div>
+   <div class="carousel-info">
+     <h3 id="infoTitle">Senna McLaren</h3>
+     <p id="infoDescription">A classic automotive capture featuring the legendary McLaren Senna, showcasing its aggressive design and racing heritage.</p>
+     <p id="game">Assetto Corsa</p>
+   </div>
+ </div>
+   
 </body>
 </html>
