@@ -22,6 +22,15 @@ body {
   padding: 10px;
 }
 
+footer {
+  text-align: center;
+  padding: 24px;
+  color: rgba(255,255,255,0.2);
+  font-family: var(--fontMain);
+  font-size: 0.75rem;
+  letter-spacing: 0.15em;
+}
+
 :root {
   --fontMain: JetBrains Mono, monospace;
   --fontSec: Montserrat, sans-serif;
