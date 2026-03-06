@@ -7,29 +7,19 @@ body {
   box-sizing: border-box;
 }
 
-@keyframes gradientShift {
-  0% {
-    background-position: 0%;
-  }
-  50% {
-    background-position: 50%;
-  }
-   100% {
-      background-position: 100%;
-   }
-}
-
 body {
   overflow-x: hidden;
   overflow-y: scroll;
   scrollbar-gutter: stable;
-  background:
-    radial-gradient(rgba(255, 255, 255, 0.25) 15%, transparent 0) 50% 0 / 20px 20px,
-    linear-gradient(-45deg, #ffffff46, #00000046, #ffffff46);
-  background-size: 10px 10px, 200% 200%;
-  background-color: rgb(40, 40, 40);
+  background-color: #0c0c0e;
+  background-image:
+    /* grade fina e sutil */
+    linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px),
+    /* brilho esverdeado suave vindo do topo, harmoniza com a galeria */
+    radial-gradient(ellipse 80% 40% at 50% 5%, rgba(80,120,100,0.3) 0%, transparent 70%);
+  background-size: 40px 40px, 40px 40px, 100% 100%;
   padding: 10px;
-  animation: gradientShift 25s linear infinite;
 }
 
 :root {
@@ -94,7 +84,6 @@ h1 {
 img {
   width: 100%;
   height: 100%;
-  opacity: 0.4;
   z-index: 1;
   grid-area: 1/1;
   object-fit: cover;
@@ -161,87 +150,10 @@ img {
   overflow-wrap: break-word;
 }
 
-/* Carousel */
+/* Art pieces / galeria */
 .art-pieces {
-  margin-top: auto;
-  display: flex;
-  gap: 30px;
+  margin-top: 40px;
   width: 100%;
-  padding: 20px;
+  padding: 0 20px 40px;
   z-index: 1;
-  align-items: flex-start;
-  justify-content: space-between;
 }
-
-.carousel-info {
-  flex: 1;
-  min-width: 300px;
-  color: white;
-  padding: 30px;
-  background: var(--bg-dark);
-  border-radius: 10px;
-  font-family: var(--fontSec);
-  height: fit-content;
-}
-
-.carousel-info h3 {
-  font-size: 1.5em;
-  margin-bottom: 15px;
-  font-family: var(--fontMain);
-}
-
-.carousel-info p {
-  font-size: 0.95rem;
-  line-height: 1.6;
-}
-
-.carousel-display {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  gap: 15px;
-  align-items: center;
-}
-
-.carousel-image {
-  width: 1152px;
-  height: 758px;
-  background: var(--bg-dark);
-  border: 1px solid var(--border-light);
-  border-radius: 10px;
-  overflow: hidden;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.carousel-image img {
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
-  opacity: 1;
-}
-
-.carousel-nav {
-  display: flex;
-  gap: 15px;
-  justify-content: center;
-}
-
-.carousel-btn {
-  padding: 12px 30px;
-  background: var(--text-light);
-  border: 1px solid var(--text-light-border);
-  color: white;
-  font-size: 1em;
-  border-radius: 5px;
-  cursor: pointer;
-  font-family: var(--fontSec);
-  transition: all 300ms ease;
-}
-
-.carousel-btn:hover {
-  background: var(--text-light-hover);
-  border-color: rgba(255, 255, 255, 0.5);
-}
-

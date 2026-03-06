@@ -1,72 +1,109 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
- <meta charset="UTF-8" />
- <meta name="viewport" content="width=device-width, initial-scale=1.0" />
- <meta> <link rel="stylesheet" href="Home.css"/>
- <script src="assets/images.js"></script>
- <script src="assets/carousel.js"></script>
- <title>Pagina principal</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>KitsCodes — Pedro Geraldo</title>
+  <link rel="stylesheet" href="Home.css" />
+  <link rel="stylesheet" href="pond-gallery.css" />
 </head>
 <body>
+
 <header>
- <h1 class="header-center">KitsCodes</h1>
+  <h1 class="header-center">KitsCodes</h1>
 </header>
+
 <section class="main">
- <div class="container">
-  <div class="cont-items">
-   <div class="icon">Myself</div>
-   <div class="info">
-      <strong>Nickname: </strong> KitsCodes (also Lappen)<br/>
-      <strong>Full Name: </strong> Pedro H. S. S. Geraldo<br/>
-      <strong>Age: </strong> 20 years old<br/>
-      <strong>Location: </strong> Brazil<br/>
-      <strong>Education: </strong> Student of Analysis and Systems Development<br/>
-      <strong>Interests: </strong> Technology, automotive photography, and software engineering<br/>
-      <strong>Passion: </strong> Creating innovative solutions and contributing to the tech community
-   </div>
+  <div class="container">
+
+    <div class="cont-items">
+      <div class="icon">Myself</div>
+      <div class="info">
+        <strong>Nickname:</strong> KitsCodes (also Lappen)<br/>
+        <strong>Full Name:</strong> Pedro H. S. S. Geraldo<br/>
+        <strong>Age:</strong> 20 years old<br/>
+        <strong>Location:</strong> Brazil<br/>
+        <strong>Education:</strong> Student of Analysis and Systems Development<br/>
+        <strong>Interests:</strong> Technology, automotive photography, and software engineering<br/>
+        <strong>Passion:</strong> Creating innovative solutions and contributing to the tech community
+      </div>
+    </div>
+
+    <div class="cont-items">
+      <div class="icon">Things I Do</div>
+      <div class="info">
+        <strong>Web Development:</strong> Creating responsive and interactive web experiences<br/>
+        <strong>Graphical Design:</strong> Developing beautiful pieces of art involving cars, nature and anime<br/>
+        <strong>Open Source:</strong> Contributing to community projects and collaborative development<br/>
+      </div>
+    </div>
+
+    <div class="cont-items">
+      <div class="icon">Experience</div>
+      <div class="info">
+        <strong>Software Development:</strong> 2+ years crafting efficient and maintainable code<br/>
+        <strong>Open Source:</strong> Active contributor to community-driven projects and initiatives<br/>
+        <strong>Tech Stack:</strong> Proficient in visual programming languages and modern frameworks<br/>
+        <strong>Collaboration:</strong> Worked with diverse teams in different environments<br/>
+        <strong>Graphical Design:</strong> 2+ years of Adobe software (Photoshop, Illustrator, InDesign)<br/>
+        <strong>Learning:</strong> Constantly evolving skills and staying current with industry trends
+      </div>
+    </div>
+
   </div>
 
-  <div class="cont-items">
-   <div class="icon">Things i do</div>
-   <div class="info">
-      <strong>Web Development:</strong> Creating responsive and interactive web experiences<br/>
-      <strong>Graphical Design:</strong> Develop beautiful pieces of art, envolving cars, nature and anime (possibly)<br/>
-      <strong>Game Dev:</strong> Designing engaging gameplay mechanics<br/>
-      <strong>Open Source:</strong> Contributing to community projects and collaborative development<br/>
-      <strong>Technical Writing:</strong> Documenting code and sharing knowledge through articles
-   </div>
-  </div>
+  <!-- ── Galeria substituindo o carrossel ── -->
+  <div class="art-pieces">
 
-  <div class="cont-items">
-   <div class="icon">Experiences</div>
-   <div class="info">
-      <strong>Software Development:</strong> 2+ years crafting efficient and maintainable code<br/>
-      <strong>Open Source:</strong> Active contributor to community-driven projects and initiatives<br/>
-      <strong>Tech Stack:</strong> Proficient in visual programming languages and modern frameworks<br/>
-      <strong>Collaboration:</strong> Worked with diverse teams in diferent environments<br/>
-      <strong>Graphical design:</strong> 2+ years of Adobe software (Photoshop, Illustrator, InDesign)</br>
-      <strong>Learning:</strong> Constantly evolving skills and staying current with industry trends
-   </div>
-  </div>
- </div>
+    <div class="pond-section-label">Art Pieces</div>
 
- <div class="art-pieces">
-   <div class="carousel-display">
-     <div class="carousel-image">
-       <img src="images/senna.jpg" alt="Art piece" id="carouselImage">
-     </div>
-     <div class="carousel-nav">
-       <button class="carousel-btn prev" onclick="changeSlide(-1)">‹ Previous</button>
-       <button class="carousel-btn next" onclick="changeSlide(1)">Next ›</button>
-     </div>
-   </div>
-   <div class="carousel-info">
-     <h3 id="infoTitle">Senna McLaren</h3>
-     <p id="infoDescription">A classic automotive capture featuring the legendary McLaren Senna, showcasing its aggressive design and racing heritage.</p>
-     <p id="game">Assetto Corsa</p>
-   </div>
- </div>
-   
+    <div id="pond">
+      <div class="water-texture"></div>
+      <div class="ambient-light"></div>
+      <div id="ripple-layer"></div>
+      <div id="leaf-layer"></div>
+      <div class="hint" id="hint">click to view · drag to move</div>
+    </div>
+
+    <!-- Painel de detalhes -->
+    <div id="detail-overlay" class="hidden">
+      <div id="detail-panel">
+        <div id="detail-img-wrap">
+          <img id="detail-img" src="" alt="" />
+          <div class="detail-img-fade"></div>
+        </div>
+        <div id="detail-info">
+          <div id="detail-meta"></div>
+          <div id="detail-title"></div>
+          <div class="detail-divider"></div>
+          <div id="detail-desc"></div>
+          <div class="detail-actions">
+            <button id="detail-expand">⤢ Full size</button>
+            <button id="detail-close">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Fullscreen viewer -->
+    <div id="fullscreen-overlay" class="hidden">
+      <div id="fullscreen-panel">
+        <div id="fullscreen-img-wrap">
+          <img id="fullscreen-img" src="" alt="" />
+        </div>
+        <div id="fullscreen-info">
+          <div id="fullscreen-meta"></div>
+          <div id="fullscreen-title"></div>
+          <div class="detail-divider"></div>
+          <div id="fullscreen-desc"></div>
+          <button id="fullscreen-close">Close</button>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<script src="assets/pond-gallery.js"></script>
 </body>
 </html>
