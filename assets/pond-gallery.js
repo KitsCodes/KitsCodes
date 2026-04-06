@@ -3,6 +3,22 @@
    Substitua os campos src/title/year/location/desc
    com as suas imagens reais em /images/
 ───────────────────────────────────────── */
+  /* ── Add more images below ──
+     Copy this block for each new photo.
+     Adjust x/y to spread leaves around the space.
+     rotation: angle in degrees (positive or negative)
+     w/h: optional width and height in pixels (will be randomized if omitted)
+
+  {
+    id: 8,
+    src: "images/your-photo.jpg",
+    title: "Photo Title",
+    year: "2024",
+    location: "Game / Location",
+    desc: "A brief description of the image.",
+    rotation: 5, x: 300, y: 40,
+  },
+  */
 
 const IMAGES = [
   {
@@ -68,22 +84,51 @@ const IMAGES = [
     desc: "The ultimate expression of McLaren's engineering prowess, the Speedtail represents peak automotive performance.",
     rotation: 7, x: 350, y: 380,
   },
-  /* ── Add more images below ──
-     Copy this block for each new photo.
-     Adjust x/y to spread leaves around the space.
-     rotation: angle in degrees (positive or negative)
-     w/h: optional width and height in pixels (will be randomized if omitted)
-
   {
-    id: 8,
-    src: "images/your-photo.jpg",
-    title: "Photo Title",
-    year: "2024",
-    location: "Game / Location",
-    desc: "A brief description of the image.",
-    rotation: 5, x: 300, y: 40,
+    id: 9,
+    src: "images/amgone.png",
+    title: "AMG1",
+    year: "2026",
+    location: "Assetto Corsa",
+    desc: "Mercedes AMG One getting ready to enter the Nordschleife, capturing the nerves and the intensity of the task.",
+    rotation: 0, x: 0, y: 0, w: 220, h: 165,
   },
-  */
+  {
+    id: 10,
+    src: "images/nsx500.png",
+    title: "Honda NSX GT500",
+    year: "2026",
+    location: "Assetto corsa",
+    desc: "A setting shot of an NSX GT500, moments before a race start, roaring while raining.",
+    rotation: 0, x: 0, y: 0, w: 220, h: 165,
+  },
+  {
+    id: 11,
+    src: "images/Nissangt500.png",
+    title: "Nissan Z GT500",
+    year: "2026",
+    location: "Assetto Corsa",
+    desc: "Top down photo, depicting a GT500 in the rain of a pit lane.",
+    rotation: 0, x: 0, y: 0, w: 220, h: 165,
+  },
+  {
+    id: 12,
+    src: "images/Nissan500.png",
+    title: "Nissan Z GT500",
+    year: "2026",
+    location: "Assetto Corsa",
+    desc: "Frontal shot of a beautiful automotiv marvel, fast vehicle.",
+    rotation: 0, x: 0, y: 0, w: 220, h: 165,
+  },
+  {
+    id: 13,
+    src: "images/edited.png",
+    title: "Honda NSX GT500",
+    year: "2026",
+    location: "Assetto Corsa",
+    desc: "Edited photo, by me.",
+    rotation: 0, x: 0, y: 0, w: 220, h: 165,
+  },
 ];
 
 const RIPPLE_DURATION = 1200;
