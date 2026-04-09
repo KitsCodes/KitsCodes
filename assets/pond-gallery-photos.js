@@ -129,6 +129,24 @@ const IMAGES = [
     desc: "Edited photo, by me.",
     rotation: 0, x: 0, y: 0, w: 220, h: 165,
   },
+  {
+    id: 14,
+    src: "images/Screenshot_cky_bmw_m3_gt3_evo_ks_nordschleife_8-3-126-23-49-56.png",
+    title: "BMW M3 Touring GT3 EVO",
+    year: "2026",
+    location: "Assetto Corsa",
+    desc: "The Infamous GT3 M3, what everyone thought wouldn't work and was just a joke, actually, has competition potential.",
+    rotation: 0, x: 0, y: 0, w: 220, h: 165,
+  },
+  {
+    id: 15,
+    src: "images/Screenshot_cky_bmw_m3_gt3_evo_ks_nordschleife_8-3-126-23-49-56.png",
+    title: "BMW M3 Touring GT3 EVO",
+    year: "2026",
+    location: "Assetto Corsa",
+    desc: "The Infamous GT3 M3, what everyone thought wouldn't work and was just a joke, actually, has competition potential.",
+    rotation: 0, x: 0, y: 0, w: 220, h: 165,
+  },
 ];
 
 const RIPPLE_DURATION = 1200;

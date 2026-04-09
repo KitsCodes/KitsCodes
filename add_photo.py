@@ -2,7 +2,7 @@
 """
 add_photo.py — KitsCodes Gallery Helper
 ────────────────────────────────────────
-Adiciona fotos novas à galeria da lagoa automaticamente.
+Adiciona fotos novas à galeria automaticamente (POND ou SHOWCASE).
 
 Uso:
   python add_photo.py
@@ -11,7 +11,8 @@ Coloque as fotos que quer adicionar na pasta 'new_photos/' antes de rodar.
 O script vai:
   1. Copiar as imagens para a pasta 'images/'
   2. Perguntar título, local e descrição de cada uma
-  3. Atualizar o pond-gallery.js automaticamente
+  3. Perguntar se vai para POND ou SHOWCASE
+  4. Atualizar o arquivo JS apropriado automaticamente
 
 Requisitos:
   pip install pillow
@@ -24,17 +25,22 @@ from datetime import datetime
 from pathlib import Path
 
 # ── Configuração ──────────────────────────────────────────
-GALLERY_JS   = "assets/pond-gallery.js"   # caminho do seu JS
+POND_JS      = "assets/pond-gallery-photos.js"   # Galeria principal estilo lagoa
+SHOWCASE_JS  = "assets/showcase.js"       # Galeria showcase
 IMAGES_DIR   = "images"                   # pasta de destino das imagens
 NEW_DIR      = "new_photos"               # pasta onde você coloca as fotos novas
 SUPPORTED    = {".jpg", ".jpeg", ".png", ".webp"}
 # ─────────────────────────────────────────────────────────
 
 
-def get_next_id(js_content):
+def get_next_id(js_content, gallery_type):
     """Pega o maior id existente e retorna o próximo."""
+    # Define a base de ID para cada galeria
+    base_id = 0 if gallery_type == "pond" else 1000
     ids = re.findall(r"id:\s*(\d+)", js_content)
-    return max((int(i) for i in ids), default=0) + 1
+    # Filtra apenas os IDs relevantes para a galeria
+    relevant_ids = [int(i) for i in ids if (gallery_type == "pond" and int(i) < 1000) or (gallery_type == "showcase" and int(i) >= 1000)]
+    return max(relevant_ids, default=base_id) + 1
 
 
 def get_image_year(filepath):
@@ -94,8 +100,11 @@ def main():
     print("╚══════════════════════════════════════╝\n")
 
     # Verifica estrutura de pastas
-    if not Path(GALLERY_JS).exists():
-        print(f"❌ Não encontrei {GALLERY_JS}. Rode o script na raiz do projeto.")
+    if not Path(POND_JS).exists():
+        print(f"❌ Não encontrei {POND_JS}. Rode o script na raiz do projeto.")
+        return
+    if not Path(SHOWCASE_JS).exists():
+        print(f"❌ Não encontrei {SHOWCASE_JS}. Rode o script na raiz do projeto.")
         return
 
     os.makedirs(NEW_DIR, exist_ok=True)
@@ -117,12 +126,14 @@ def main():
         print(f"   • {p.name}")
     print()
 
-    # Lê o JS atual
-    with open(GALLERY_JS, "r", encoding="utf-8") as f:
-        js_content = f.read()
+    # Lê ambos os JS
+    with open(POND_JS, "r", encoding="utf-8") as f:
+        pond_content = f.read()
+    with open(SHOWCASE_JS, "r", encoding="utf-8") as f:
+        showcase_content = f.read()
 
-    next_id = get_next_id(js_content)
-    entries = []
+    pond_entries = []
+    showcase_entries = []
 
     for photo in new_photos:
         print(f"─── {photo.name} ───────────────────────────")
@@ -134,6 +145,13 @@ def main():
             if overwrite.lower() != "s":
                 print("  ↳ Pulando.\n")
                 continue
+
+        # Escolhe a galeria
+        print("  Para qual galeria?")
+        print("    [1] Pond (Galeria flutuante)")
+        print("    [2] Showcase (Galeria em destaque)")
+        gallery_choice = ask("  Escolha", "1")
+        gallery_type = "showcase" if gallery_choice == "2" else "pond"
 
         # Pega info do usuário
         default_year = get_image_year(photo)
@@ -148,34 +166,55 @@ def main():
 
         # Monta a entrada JS
         src_path = f"images/{photo.name}"
-        entry = (
-            f"  {{\n"
-            f"    id: {next_id},\n"
-            f"    src: \"{src_path}\",\n"
-            f"    title: \"{title}\",\n"
-            f"    year: \"{year}\",\n"
-            f"    location: \"{location}\",\n"
-            f"    desc: \"{desc}\",\n"
-            f"    rotation: 0, x: 0, y: 0, w: 220, h: 165,\n"
-            f"  }},"
-        )
-        entries.append(entry)
-        next_id += 1
-        print(f"  ✅ Adicionado!\n")
+        
+        if gallery_type == "pond":
+            next_id = get_next_id(pond_content, "pond")
+            entry = (
+                f"  {{\n"
+                f"    id: {next_id},\n"
+                f"    src: \"{src_path}\",\n"
+                f"    title: \"{title}\",\n"
+                f"    year: \"{year}\",\n"
+                f"    location: \"{location}\",\n"
+                f"    desc: \"{desc}\",\n"
+                f"    rotation: 0, x: 0, y: 0, w: 220, h: 165,\n"
+                f"  }},"
+            )
+            pond_entries.append(entry)
+            pond_content = inject_into_js(pond_content, entry)
+        else:
+            next_id = get_next_id(showcase_content, "showcase")
+            entry = (
+                f"  {{\n"
+                f"    id: {next_id},\n"
+                f"    src: \"{src_path}\",\n"
+                f"    title: \"{title}\",\n"
+                f"    year: \"{year}\",\n"
+                f"    location: \"{location}\",\n"
+                f"    desc: \"{desc}\",\n"
+                f"  }},"
+            )
+            showcase_entries.append(entry)
+            showcase_content = inject_into_js(showcase_content, entry)
+        
+        print(f"  ✅ Adicionado ao {'POND' if gallery_type == 'pond' else 'SHOWCASE'}!\n")
 
-    if not entries:
+    if not pond_entries and not showcase_entries:
         print("Nenhuma foto nova adicionada.")
         return
 
-    # Atualiza o JS
-    for entry in entries:
-        js_content = inject_into_js(js_content, entry)
+    # Atualiza os arquivos JS
+    if pond_entries:
+        with open(POND_JS, "w", encoding="utf-8") as f:
+            f.write(pond_content)
+        print(f"✅ {len(pond_entries)} foto(s) adicionada(s) ao pond-gallery.js!")
 
-    with open(GALLERY_JS, "w", encoding="utf-8") as f:
-        f.write(js_content)
+    if showcase_entries:
+        with open(SHOWCASE_JS, "w", encoding="utf-8") as f:
+            f.write(showcase_content)
+        print(f"✅ {len(showcase_entries)} foto(s) adicionada(s) ao showcase.js!")
 
-    print(f"✅ {len(entries)} foto(s) adicionada(s) ao pond-gallery.js!")
-    print(f"\n💡 Dica: as posições (x, y) e rotação são geradas aleatoriamente")
+    print(f"\n💡 Dica: as posições (x, y) e rotação do POND são geradas aleatoriamente")
     print(f"   pelo JavaScript quando a página carrega — não precisa ajustar!")
     print(f"\n🚀 É só fazer commit e push para o GitHub!\n")
 

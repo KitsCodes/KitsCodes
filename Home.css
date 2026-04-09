@@ -28,8 +28,8 @@ footer {
   padding: 24px;
   color: rgba(255,255,255,0.7);
   font-family: var(--fontMain);
-  font-size: 0.75rem;
-  letter-spacing: 0.15em;
+  font-size: .9rem;
+  letter-spacing: 0.1em;
 }
 
 :root {
@@ -161,9 +161,124 @@ img {
 }
 
 /* Art pieces / galeria */
-.art-pieces {
+.photos-section {
   margin-top: 40px;
   width: 100%;
   padding: 0 20px 40px;
   z-index: 1;
+}
+
+
+/* ─────────────────────────────────────────
+   Showcase Gallery
+───────────────────────────────────────── */
+
+#showcase {
+  max-width: 1000px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  font-family: Montserrat, sans-serif;
+}
+
+/* ── Imagem principal ── */
+#showcase-main-wrap {
+  position: relative;
+  width: 100%;
+  border-radius: 12px;
+  overflow: visible;
+  background: #060e0b;
+  border: 1px solid rgba(100,180,130,0.1);
+  box-shadow: 0 8px 40px rgba(0,0,0,0.6);
+  display: flex;
+  flex-direction: column;
+}
+
+#showcase-main {
+  width: 100%;
+  max-height: 600px;
+  object-fit: cover;
+  display: block;
+  opacity: 1;
+  transition: opacity 0.18s ease;
+  filter: none;
+  border-radius: 12px 12px 0 0;
+}
+
+/* Info overlay na parte de baixo */
+#showcase-main-info {
+  position: relative;
+  padding: 24px 28px 20px;
+  background: #060e0b;
+  border: 1px solid rgba(100,180,130,0.1);
+  border-top: none;
+  border-radius: 0 0 12px 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+#showcase-info-meta {
+  color: rgba(120,200,150,0.65);
+  font-size: 10px;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+}
+
+#showcase-info-title {
+  color: rgba(220,245,230,0.95);
+  font-size: 22px;
+  font-style: italic;
+  line-height: 1.2;
+  font-family: Georgia, serif;
+}
+
+#showcase-info-desc {
+  color: rgba(170,215,188,0.7);
+  font-size: 12px;
+  line-height: 1.65;
+  font-style: italic;
+  font-family: Georgia, serif;
+}
+
+/* ── Miniaturas ── */
+#showcase-thumbs {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.showcase-thumb {
+  width: calc((100% - 50px) / 6);  /* 6 por linha com gap */
+  min-width: 80px;
+  aspect-ratio: 16/9;
+  border-radius: 6px;
+  overflow: hidden;
+  cursor: pointer;
+  border: 2px solid transparent;
+  transition: border-color 0.2s, opacity 0.2s, transform 0.15s;
+  opacity: 0.5;
+  background: #060e0b;
+}
+
+.showcase-thumb:hover {
+  opacity: 0.8;
+  transform: translateY(-2px);
+}
+
+.showcase-thumb.active {
+  border-color: rgba(100,180,130,0.6);
+  opacity: 1;
+}
+
+.showcase-thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  opacity: 1;
+  filter: none;
+  pointer-events: none;
+  -webkit-user-drag: none;
 }
