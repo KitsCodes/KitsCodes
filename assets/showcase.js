@@ -30,6 +30,14 @@ const SHOWCASE_IMAGES = [
     location: "Assetto",
     desc: "Edited by me.",
   },
+  {
+    id: 1002,
+    src: "images/ford.png",
+    title: "Ford Mustang GT3",
+    year: "2023",
+    location: "24H of Le Mans",
+    desc: "Edited by me. <3",
+  },
 ];
 
 /* ── DOM refs ── */
